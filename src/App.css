@@ -40,3 +40,10 @@ button{
   height: 40px;
   margin-left: 15px;
 }
+
+.ulBox{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}

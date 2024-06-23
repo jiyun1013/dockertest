@@ -29,9 +29,9 @@ function App() {
     <div id='wrap'>
       <section id='secOne'>
         <form onSubmit={handleAdd}>
-          <input 
-            type='text' 
-            value={inputValue} 
+          <input
+            type='text'
+            value={inputValue}
             onChange={e => setInputValue(e.target.value)}
             placeholder='텍스트 입력창'
           />
@@ -43,11 +43,13 @@ function App() {
         <div>
           <button onClick={handleGetAll}>가져오기</button>
         </div>
-        <ul>
-          {allValues.map((item) => (
-            <li key={item.id}>{item.value}</li>
-          ))}
-        </ul>
+        <div className='ulBox'>
+          <ul>
+            {allValues.map((item) => (
+              <li key={item.id}>{item.value}</li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );

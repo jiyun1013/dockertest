@@ -1,6 +1,8 @@
 # back/crud.py
 from sqlalchemy.orm import Session
-from . import models, schemas
+
+from . import models
+from . import schemas
 
 def create_data(db: Session, data: schemas.DataCreate):
     db_data = models.Data(value=data.value)
