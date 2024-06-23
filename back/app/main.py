@@ -1,11 +1,12 @@
-from typing import List  # 추가해야 할 부분
-
+# app/main.py
+from typing import List
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from back.app import schemas
-from back.app.database import SessionLocal, engine
-from back.app import crud, models
+from app.database import SessionLocal, engine
+from app import crud, models
+
 
 models.Base.metadata.create_all(bind=engine)
 

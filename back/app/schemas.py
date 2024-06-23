@@ -1,4 +1,4 @@
-# back/schemas.py
+# app/schemas.py
 from pydantic import BaseModel
 
 class DataBase(BaseModel):
