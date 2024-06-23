@@ -1,4 +1,4 @@
-# app/crud.py
+# back/crud.py
 from sqlalchemy.orm import Session
 from . import models, schemas
 
@@ -11,3 +11,6 @@ def create_data(db: Session, data: schemas.DataCreate):
 
 def get_latest_data(db: Session):
     return db.query(models.Data).order_by(models.Data.id.desc()).first()
+
+def get_all_data(db: Session):
+    return db.query(models.Data).all()

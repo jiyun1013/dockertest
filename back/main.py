@@ -1,4 +1,5 @@
-# back/main.py
+from typing import List  # 추가해야 할 부분
+
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -9,16 +10,14 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # 여기에 허용할 클라이언트의 주소를 추가
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Dependency
 def get_db():
     db = SessionLocal()
     try:
@@ -36,3 +35,7 @@ def get_data(db: Session = Depends(get_db)):
     if db_data is None:
         raise HTTPException(status_code=404, detail="No data found")
     return db_data
+
+@app.get("/get_all/", response_model=List[schemas.Data])  # List 임포트 추가
+def get_all_data(db: Session = Depends(get_db)):
+    return crud.get_all_data(db)
